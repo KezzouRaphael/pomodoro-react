@@ -1,0 +1,51 @@
+{
+  "name": "pomodoro-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KezzouRaphael/pomodoro-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KezzouRaphael/pomodoro-react/issues"
+  },
+  "homepage": "https://github.com/KezzouRaphael/pomodoro-react#readme",
+  "devDependencies": {
+    "@becode/eslint-config": "^0.13.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.13.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-unicorn": "^42.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.6.2"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "sass": "^1.50.0"
+  },
+  "lint-staged": {
+    "*.json": [
+      "npx prettier --write"
+    ],
+    "*.js": [
+      "npx eslint --fix --cache"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  }
+}
