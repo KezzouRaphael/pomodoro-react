@@ -18896,8 +18896,12 @@ var Timer = function Timer() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app"
   }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "time-container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "time"
-  }, minutes, " : ", seconds), /*#__PURE__*/_react.default.createElement("div", {
+  }, minutes, " : ", seconds)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "row-container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "row"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "minus",
@@ -18921,7 +18925,7 @@ var Timer = function Timer() {
     onClick: plusOne
   }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
     icon: _freeSolidSvgIcons.faPlus
-  }))));
+  })))));
 };
 
 var _default = Timer;

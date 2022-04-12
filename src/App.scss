@@ -5,3 +5,29 @@
 .app{
   text-align: center;
 }
+.row{
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+  &-container{
+    display: flex;
+    justify-content:center;
+  }
+}
+.time{
+  height:200px;
+  width: 200px;
+  text-align: center;
+  padding: 5rem;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  border: 1px solid red;
+  border-radius: 50%;
+  &-container{
+    display: flex;
+    justify-content:center;
+  }
+}

@@ -85,12 +85,16 @@ const Timer = () => {
   }, [isActive, seconds,minutes]);
   return (
     <div className="app">
-      <div className="time">{minutes} : {seconds}</div>
-      <div className="row">
-        <button className="minus" onClick={minusOne}><FontAwesomeIcon icon={faMinus}/></button>
-        <button className={`button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>{isActive ? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>} </button>
-        <button className="button-secondary" onClick={reset}> <FontAwesomeIcon icon={faArrowRotateLeft}/> </button>
-        <button className="add" onClick={plusOne}><FontAwesomeIcon icon={faPlus}/></button>
+      <div className="time-container">
+        <div className="time">{minutes} : {seconds}</div>
+      </div>
+      <div className="row-container">
+        <div className="row">
+          <button className="minus" onClick={minusOne}><FontAwesomeIcon icon={faMinus}/></button>
+          <button className={`button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>{isActive ? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>} </button>
+          <button className="button-secondary" onClick={reset}> <FontAwesomeIcon icon={faArrowRotateLeft}/> </button>
+          <button className="add" onClick={plusOne}><FontAwesomeIcon icon={faPlus}/></button>
+        </div>
       </div>
     </div>
   );
