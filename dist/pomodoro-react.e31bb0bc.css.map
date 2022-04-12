@@ -1,1 +1,1 @@
-{"version":3,"sources":["src/Pomodoro.scss"],"names":[],"mappings":"AAAA","file":"pomodoro-react.e31bb0bc.css","sourceRoot":"..","sourcesContent":[""]}
+{"version":3,"sources":["src/App.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;;AAEF;EACE","file":"pomodoro-react.e31bb0bc.css","sourceRoot":"..","sourcesContent":[".title{\n  color: red;\n  text-align: center;\n}\n.app{\n  text-align: center;\n}"]}
