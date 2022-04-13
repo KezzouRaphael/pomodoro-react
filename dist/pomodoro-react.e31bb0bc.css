@@ -1,6 +1,14 @@
+#root {
+  margin: 0 10rem;
+  background-color: rgba(180, 12, 158, 0.836);
+  border-radius: 0.5rem;
+}
+
 .title {
-  color: red;
+  color: white;
   text-align: center;
+  text-decoration: underline;
+  padding: 2rem;
 }
 
 .app {
@@ -11,6 +19,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 200px;
+  padding: 2rem;
 }
 .row-container {
   display: flex;
@@ -27,7 +36,8 @@
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  border: 1px solid red;
+  border: 1px solid white;
+  color: white;
   border-radius: 50%;
 }
 .time-container {
@@ -46,13 +56,22 @@
   /* Full width */
   height: 100%;
   /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
   background-color: white;
   opacity: 1;
 }
 .modal-title {
   text-align: center;
+}
+.modal-container {
+  margin: 0 8rem;
+  background-color: rgba(180, 12, 158, 0.836);
+  border-radius: 0.5rem;
+}
+.modal-title {
+  color: white;
+  text-align: center;
+  text-decoration: underline;
+  padding: 2rem;
 }
 
 .close, .close-and-play {

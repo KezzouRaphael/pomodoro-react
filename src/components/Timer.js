@@ -5,10 +5,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-const Timer = ({showModal,setShowModal}) => {
-  const [seconds, setSeconds] = useState('03');
-  const [minutes,setMinutes] = useState('00');
+const Timer = ({showModal,setShowModal,isReset,setIsReset}) => {
+  const [seconds, setSeconds] = useState('00');
+  const [minutes,setMinutes] = useState('25');
   const [isActive, setIsActive] = useState(false);
   //functions
   function toggle() {
@@ -50,6 +49,10 @@ const Timer = ({showModal,setShowModal}) => {
     }
   }
   useEffect(() => {
+    if(isReset){
+      reset();
+      setIsReset(false);
+    }
     let interval;
     if (isActive) {
       interval = setInterval(() => {
@@ -74,6 +77,7 @@ const Timer = ({showModal,setShowModal}) => {
           }
           else
           {
+            setIsActive(false);
             setShowModal(true);
             clearInterval(interval);
           }
@@ -84,7 +88,7 @@ const Timer = ({showModal,setShowModal}) => {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds,minutes]);
+  }, [isActive,isReset, seconds,minutes]);
   return (
     <div className="app">
       <div className="time-container">

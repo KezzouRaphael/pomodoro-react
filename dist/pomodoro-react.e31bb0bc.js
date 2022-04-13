@@ -18757,240 +18757,7 @@ var _iconsCache = {
   faZ: faZ
 };
 exports.fas = _iconsCache;
-},{}],"node_modules/react-countdown-circle-timer/lib/index.module.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useCountdown = exports.CountdownCircleTimer = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var v = typeof window == "undefined" ? _react.useEffect : _react.useLayoutEffect,
-    I = ({
-  isPlaying: o,
-  duration: t,
-  startAt: n = 0,
-  updateInterval: e = 0,
-  onComplete: s,
-  onUpdate: r
-}) => {
-  let [i, m] = (0, _react.useState)(n),
-      l = (0, _react.useRef)(0),
-      p = (0, _react.useRef)(n),
-      d = (0, _react.useRef)(n * -1e3),
-      u = (0, _react.useRef)(null),
-      c = (0, _react.useRef)(null),
-      w = (0, _react.useRef)(null),
-      h = f => {
-    let a = f / 1e3;
-
-    if (c.current === null) {
-      c.current = a, u.current = requestAnimationFrame(h);
-      return;
-    }
-
-    let R = a - c.current,
-        g = l.current + R;
-    c.current = a, l.current = g;
-    let k = p.current + (e === 0 ? g : (g / e | 0) * e),
-        D = p.current + g,
-        B = typeof t == "number" && D >= t;
-    m(B ? t : k), B || (u.current = requestAnimationFrame(h));
-  },
-      y = () => {
-    u.current && cancelAnimationFrame(u.current), w.current && clearTimeout(w.current), c.current = null;
-  },
-      b = (0, _react.useCallback)(f => {
-    y(), l.current = 0;
-    let a = typeof f == "number" ? f : n;
-    p.current = a, m(a), o && (u.current = requestAnimationFrame(h));
-  }, [o, n]);
-
-  return v(() => {
-    if (r == null || r(i), t && i >= t) {
-      d.current += t * 1e3;
-      let {
-        shouldRepeat: f = !1,
-        delay: a = 0,
-        newStartAt: R
-      } = (s == null ? void 0 : s(d.current / 1e3)) || {};
-      f && (w.current = setTimeout(() => b(R), a * 1e3));
-    }
-  }, [i, t]), v(() => (o && (u.current = requestAnimationFrame(h)), y), [o, t, e]), {
-    elapsedTime: i,
-    reset: b
-  };
-};
-
-var A = (o, t, n) => {
-  let e = o / 2,
-      s = t / 2,
-      r = e - s,
-      i = 2 * r,
-      m = n === "clockwise" ? "1,0" : "0,1",
-      l = 2 * Math.PI * r;
-  return {
-    path: `m ${e},${s} a ${r},${r} 0 ${m} 0,${i} a ${r},${r} 0 ${m} 0,-${i}`,
-    pathLength: l
-  };
-},
-    $ = (o, t) => o === 0 || o === t ? 0 : typeof t == "number" ? o - t : 0,
-    T = o => ({
-  position: "relative",
-  width: o,
-  height: o
-}),
-    P = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "absolute",
-  left: 0,
-  top: 0,
-  width: "100%",
-  height: "100%"
-};
-
-var G = (o, t, n, e) => {
-  if (e === 0) return t;
-  let s = o / e;
-  return t + n * s;
-},
-    F = o => {
-  var t, n;
-  return (n = (t = o.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (e, s, r, i) => `#${s}${s}${r}${r}${i}${i}`).substring(1).match(/.{2}/g)) == null ? void 0 : t.map(e => parseInt(e, 16))) != null ? n : [];
-},
-    j = (o, t) => {
-  var d;
-  let {
-    colors: n,
-    colorsTime: e,
-    isSmoothColorTransition: s = !0
-  } = o;
-  if (typeof n == "string") return n;
-  let r = (d = e == null ? void 0 : e.findIndex((u, c) => u >= t && t >= e[c + 1])) != null ? d : -1;
-  if (!e || r === -1) return n[0];
-  if (!s) return n[r];
-  let i = e[r] - t,
-      m = e[r] - e[r + 1],
-      l = F(n[r]),
-      p = F(n[r + 1]);
-  return `rgb(${l.map((u, c) => G(i, u, p[c] - u, m) | 0).join(",")})`;
-},
-    x = o => {
-  let {
-    duration: t,
-    initialRemainingTime: n,
-    updateInterval: e,
-    size: s = 180,
-    strokeWidth: r = 12,
-    trailStrokeWidth: i,
-    isPlaying: m = !1,
-    rotation: l = "clockwise",
-    onComplete: p,
-    onUpdate: d
-  } = o,
-      u = (0, _react.useRef)(),
-      c = Math.max(r, i != null ? i : 0),
-      {
-    path: w,
-    pathLength: h
-  } = A(s, c, l),
-      {
-    elapsedTime: y
-  } = I({
-    isPlaying: m,
-    duration: t,
-    startAt: $(t, n),
-    updateInterval: e,
-    onUpdate: typeof d == "function" ? f => {
-      let a = Math.ceil(t - f);
-      a !== u.current && (u.current = a, d(a));
-    } : void 0,
-    onComplete: typeof p == "function" ? f => {
-      var k;
-      let {
-        shouldRepeat: a,
-        delay: R,
-        newInitialRemainingTime: g
-      } = (k = p(f)) != null ? k : {};
-      if (a) return {
-        shouldRepeat: a,
-        delay: R,
-        newStartAt: $(t, g)
-      };
-    } : void 0
-  }),
-      b = t - y;
-  return {
-    elapsedTime: y,
-    path: w,
-    pathLength: h,
-    remainingTime: Math.ceil(b),
-    rotation: l,
-    size: s,
-    stroke: j(o, b),
-    strokeDashoffset: G(y, 0, h, t),
-    strokeWidth: r
-  };
-};
-
-exports.useCountdown = x;
-
-var W = o => {
-  let {
-    children: t,
-    strokeLinecap: n,
-    trailColor: e,
-    trailStrokeWidth: s
-  } = o,
-      {
-    path: r,
-    pathLength: i,
-    stroke: m,
-    strokeDashoffset: l,
-    remainingTime: p,
-    elapsedTime: d,
-    size: u,
-    strokeWidth: c
-  } = x(o);
-  return _react.default.createElement("div", {
-    style: T(u)
-  }, _react.default.createElement("svg", {
-    width: u,
-    height: u,
-    xmlns: "http://www.w3.org/2000/svg"
-  }, _react.default.createElement("path", {
-    d: r,
-    fill: "none",
-    stroke: e != null ? e : "#d9d9d9",
-    strokeWidth: s != null ? s : c
-  }), _react.default.createElement("path", {
-    d: r,
-    fill: "none",
-    stroke: m,
-    strokeLinecap: n != null ? n : "round",
-    strokeWidth: c,
-    strokeDasharray: i,
-    strokeDashoffset: l
-  })), typeof t == "function" && _react.default.createElement("div", {
-    style: P
-  }, t({
-    remainingTime: p,
-    elapsedTime: d,
-    color: m
-  })));
-};
-
-exports.CountdownCircleTimer = W;
-W.displayName = "CountdownCircleTimer";
-},{"react":"node_modules/react/index.js"}],"src/components/Timer.js":[function(require,module,exports) {
+},{}],"src/components/Timer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19003,8 +18770,6 @@ var _react = _interopRequireWildcard(require("react"));
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
-
-var _reactCountdownCircleTimer = require("react-countdown-circle-timer");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -19024,14 +18789,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Timer = function Timer(_ref) {
   var showModal = _ref.showModal,
-      setShowModal = _ref.setShowModal;
+      setShowModal = _ref.setShowModal,
+      isReset = _ref.isReset,
+      setIsReset = _ref.setIsReset;
 
-  var _useState = (0, _react.useState)('03'),
+  var _useState = (0, _react.useState)('00'),
       _useState2 = _slicedToArray(_useState, 2),
       seconds = _useState2[0],
       setSeconds = _useState2[1];
 
-  var _useState3 = (0, _react.useState)('00'),
+  var _useState3 = (0, _react.useState)('25'),
       _useState4 = _slicedToArray(_useState3, 2),
       minutes = _useState4[0],
       setMinutes = _useState4[1];
@@ -19089,6 +18856,11 @@ var Timer = function Timer(_ref) {
   }
 
   (0, _react.useEffect)(function () {
+    if (isReset) {
+      reset();
+      setIsReset(false);
+    }
+
     var interval;
 
     if (isActive) {
@@ -19119,6 +18891,7 @@ var Timer = function Timer(_ref) {
 
             setSeconds('59');
           } else {
+            setIsActive(false);
             setShowModal(true);
             clearInterval(interval);
           }
@@ -19131,7 +18904,7 @@ var Timer = function Timer(_ref) {
     return function () {
       return clearInterval(interval);
     };
-  }, [isActive, seconds, minutes]);
+  }, [isActive, isReset, seconds, minutes]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -19169,7 +18942,7 @@ var Timer = function Timer(_ref) {
 
 var _default = Timer;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","@fortawesome/react-fontawesome":"node_modules/@fortawesome/react-fontawesome/index.es.js","@fortawesome/free-solid-svg-icons":"node_modules/@fortawesome/free-solid-svg-icons/index.es.js","react-countdown-circle-timer":"node_modules/react-countdown-circle-timer/lib/index.module.js"}],"src/components/Pomodoro.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","@fortawesome/react-fontawesome":"node_modules/@fortawesome/react-fontawesome/index.es.js","@fortawesome/free-solid-svg-icons":"node_modules/@fortawesome/free-solid-svg-icons/index.es.js"}],"src/components/Pomodoro.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19189,12 +18962,16 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 function Pomodoro(_ref) {
   var showModal = _ref.showModal,
-      setShowModal = _ref.setShowModal;
+      setShowModal = _ref.setShowModal,
+      isReset = _ref.isReset,
+      setIsReset = _ref.setIsReset;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "pomodoro-container"
   }, /*#__PURE__*/_react.default.createElement(_Timer.default, {
     showModal: showModal,
-    setShowModal: setShowModal
+    setShowModal: setShowModal,
+    setIsReset: setIsReset,
+    isReset: isReset
   }));
 }
 
@@ -19224,7 +19001,9 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 var Modal = function Modal(_ref) {
   var showModal = _ref.showModal,
-      setShowModal = _ref.setShowModal;
+      setShowModal = _ref.setShowModal,
+      isReset = _ref.isReset,
+      setIsReset = _ref.setIsReset;
 
   //functions
   function Close() {
@@ -19232,7 +19011,8 @@ var Modal = function Modal(_ref) {
   }
 
   function CloseAndPlay() {
-    console.log('hello');
+    setShowModal(false);
+    setIsReset(true);
   }
 
   if (!showModal) {
@@ -19241,11 +19021,15 @@ var Modal = function Modal(_ref) {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "modal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-container"
   }, /*#__PURE__*/_react.default.createElement("h2", {
     className: "modal-title"
   }, "Enjoy your breaktime!"), /*#__PURE__*/_react.default.createElement(_Timer.default, {
     showModal: showModal,
-    setShowModal: setShowModal
+    setShowModal: setShowModal,
+    setIsReset: setIsReset,
+    isReset: isReset
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "row-container"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -19260,7 +19044,7 @@ var Modal = function Modal(_ref) {
     onClick: CloseAndPlay
   }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
     icon: _freeSolidSvgIcons.faArrowsRotate
-  })))));
+  }))))));
 };
 
 var _default = Modal;
@@ -19378,14 +19162,23 @@ function App() {
       showModal = _useState2[0],
       setShowModal = _useState2[1];
 
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isReset = _useState4[0],
+      setIsReset = _useState4[1];
+
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
     className: "title"
   }, "Pomodoro")), /*#__PURE__*/_react.default.createElement(_Pomodoro.default, {
     showModal: showModal,
-    setShowModal: setShowModal
+    setShowModal: setShowModal,
+    setIsReset: setIsReset,
+    isReset: isReset
   }), /*#__PURE__*/_react.default.createElement(_Modal.default, {
     showModal: showModal,
-    setShowModal: setShowModal
+    setShowModal: setShowModal,
+    setIsReset: setIsReset,
+    isReset: isReset
   }));
 }
 
@@ -49469,7 +49262,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39843" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40519" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
