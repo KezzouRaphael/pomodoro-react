@@ -57,6 +57,7 @@
   height: 100%;
   /* Full height */
   background-color: white;
+  overflow: auto;
   opacity: 1;
 }
 .modal-title {
