@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons';
-const Timer = () => {
-  const [seconds, setSeconds] = useState('00');
-  const [minutes,setMinutes] = useState('25');
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+const Timer = ({showModal,setShowModal}) => {
+  const [seconds, setSeconds] = useState('03');
+  const [minutes,setMinutes] = useState('00');
   const [isActive, setIsActive] = useState(false);
   //functions
   function toggle() {
@@ -73,6 +74,7 @@ const Timer = () => {
           }
           else
           {
+            setShowModal(true);
             clearInterval(interval);
           }
         }       
