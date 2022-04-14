@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-function ToggleSwitch() {
-  const [isToggled, setIsToggled] = useState(false);
-  const onToggle = () => setIsToggled(!isToggled);
+function ToggleSwitch({showModal,setShowModal}) {
+  const onToggle = () => setShowModal(!showModal);
   return (
     <label className="toggle-switch">
-      <input type="checkbox" checked={isToggled} onChange={onToggle} />
+      <input type="checkbox" checked={showModal} onChange={onToggle} />
       <span className="switch" />
     </label>
   );

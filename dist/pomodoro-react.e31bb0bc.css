@@ -97,6 +97,7 @@
   display: inline-block;
   width: 50px;
   height: 25px;
+  margin: 0.5rem 0.5rem;
 }
 
 .toggle-switch input[type=checkbox] {
@@ -129,11 +130,11 @@
 
 .toggle-switch input[type=checkbox]:checked + .switch::before {
   transform: translateX(25px);
-  background-color: #6699cc;
+  background-color: rgba(41, 1, 35, 0.836);
 }
 
 .toggle-switch input[type=checkbox]:checked + .switch {
-  background-color: #336699;
+  background-color: rgba(41, 1, 35, 0.836);
 }
 
 /*# sourceMappingURL=/pomodoro-react.e31bb0bc.css.map */

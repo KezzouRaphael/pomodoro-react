@@ -9,10 +9,11 @@ function App() {
   const [isReset,setIsReset] = useState(false);
   return (
     <>
+      <ToggleSwitch showModal={showModal} setShowModal={setShowModal}/>
       <header>
           <h1 className="title">Pomodoro</h1>
       </header>
-      <ToggleSwitch/>
+      
       <Pomodoro showModal = {showModal} setShowModal={setShowModal} setIsReset={setIsReset} isReset={isReset}/>
       <Modal showModal={showModal} setShowModal={setShowModal} setIsReset={setIsReset} isReset={isReset}/>
     </>
