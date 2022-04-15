@@ -12,6 +12,7 @@ function App() {
       <ToggleSwitch showModal={showModal} setShowModal={setShowModal}/>
       <header>
           <h1 className="title">Pomodoro</h1>
+          <h2 className="title">Work Time</h2>
       </header>
       
       <Pomodoro showModal = {showModal} setShowModal={setShowModal} setIsReset={setIsReset} isReset={isReset}/>

@@ -7,7 +7,7 @@
   color: white;
   text-align: center;
   text-decoration: underline;
-  padding:2rem;
+  padding:1rem;
 }
 .app{
   text-align: center;
@@ -19,14 +19,15 @@
   &-container{
     display: flex;
     justify-content:center;
+    padding: 0.5rem;
   }
-  padding: 2rem;
+  padding: 0.3rem;
 }
 .time{
   height:100px;
   width: 100px;
   text-align: center;
-  padding: 5rem;
+  padding: 4rem;
   margin: 2rem;
   display: flex;
   justify-content: center;
@@ -50,11 +51,12 @@
   background-color: white;
   overflow: auto;
   opacity: 1;
+  margin: 0.5rem 0;
   &-title{
     text-align: center;
   }
   &-container{
-    margin: 0 8rem;
+    margin: 0 12rem;
     background-color: rgba(180, 12, 158, 0.836);
     border-radius:0.5rem;
   }

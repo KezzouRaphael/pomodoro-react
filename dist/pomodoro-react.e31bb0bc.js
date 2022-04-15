@@ -18977,7 +18977,7 @@ function Pomodoro(_ref) {
 
 var _default = Pomodoro;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Timer":"src/components/Timer.js"}],"src/components/Modal.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Timer":"src/components/Timer.js"}],"src/components/ToggleSwitch.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18986,6 +18986,43 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ToggleSwitch(_ref) {
+  var showModal = _ref.showModal,
+      setShowModal = _ref.setShowModal;
+
+  var onToggle = function onToggle() {
+    return setShowModal(!showModal);
+  };
+
+  return /*#__PURE__*/_react.default.createElement("label", {
+    className: "toggle-switch"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    checked: showModal,
+    onChange: onToggle
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: "switch"
+  }));
+}
+
+var _default = ToggleSwitch;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/components/Modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ToggleSwitch = _interopRequireDefault(require("./ToggleSwitch"));
 
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 
@@ -19023,7 +19060,10 @@ var Modal = function Modal(_ref) {
     className: "modal"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-container"
-  }, /*#__PURE__*/_react.default.createElement("h2", {
+  }, /*#__PURE__*/_react.default.createElement(_ToggleSwitch.default, {
+    showModal: showModal,
+    setShowModal: setShowModal
+  }), /*#__PURE__*/_react.default.createElement("h2", {
     className: "modal-title"
   }, "Enjoy your breaktime!"), /*#__PURE__*/_react.default.createElement(_Timer.default, {
     showModal: showModal,
@@ -19049,42 +19089,7 @@ var Modal = function Modal(_ref) {
 
 var _default = Modal;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","@fortawesome/react-fontawesome":"node_modules/@fortawesome/react-fontawesome/index.es.js","@fortawesome/free-solid-svg-icons":"node_modules/@fortawesome/free-solid-svg-icons/index.es.js","./Timer":"src/components/Timer.js"}],"src/components/ToggleSwitch.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function ToggleSwitch(_ref) {
-  var showModal = _ref.showModal,
-      setShowModal = _ref.setShowModal;
-
-  var onToggle = function onToggle() {
-    return setShowModal(!showModal);
-  };
-
-  return /*#__PURE__*/_react.default.createElement("label", {
-    className: "toggle-switch"
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "checkbox",
-    checked: showModal,
-    onChange: onToggle
-  }), /*#__PURE__*/_react.default.createElement("span", {
-    className: "switch"
-  }));
-}
-
-var _default = ToggleSwitch;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./ToggleSwitch":"src/components/ToggleSwitch.js","@fortawesome/react-fontawesome":"node_modules/@fortawesome/react-fontawesome/index.es.js","@fortawesome/free-solid-svg-icons":"node_modules/@fortawesome/free-solid-svg-icons/index.es.js","./Timer":"src/components/Timer.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -19209,7 +19214,9 @@ function App() {
     setShowModal: setShowModal
   }), /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
     className: "title"
-  }, "Pomodoro")), /*#__PURE__*/_react.default.createElement(_Pomodoro.default, {
+  }, "Pomodoro"), /*#__PURE__*/_react.default.createElement("h2", {
+    className: "title"
+  }, "Work Time")), /*#__PURE__*/_react.default.createElement(_Pomodoro.default, {
     showModal: showModal,
     setShowModal: setShowModal,
     setIsReset: setIsReset,
@@ -49302,7 +49309,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39627" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45971" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

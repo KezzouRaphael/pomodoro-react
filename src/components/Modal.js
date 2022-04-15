@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ToggleSwitch from "./ToggleSwitch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +19,9 @@ const Modal = ({showModal,setShowModal,isReset,setIsReset}) => {
   }
   return (
     <div className="modal">
+      
       <div className="modal-container">
+        <ToggleSwitch showModal={showModal} setShowModal={setShowModal}/>
         <h2 className='modal-title'>Enjoy your breaktime!</h2>
         <Timer showModal={showModal} setShowModal={setShowModal} setIsReset={setIsReset} isReset={isReset}/>
         <div className="row-container">
